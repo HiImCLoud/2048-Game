@@ -6,7 +6,7 @@ let columns = 4;
 
 function setGame() {
   board = [
-    [2, 0, 0, 0],
+    [0, 2, 2, 0],
     [2, 0, 0, 0],
     [0, 4, 0, 0],
     [0, 4, 0, 0],
@@ -68,9 +68,17 @@ document.addEventListener("keydown", handleSlide);
 function slideLeft() {
   for (let r = 0; r < rows; r++) {
     let row = board[r];
+    row = slide(row);
+
+    board[r] = row;
+    for (let c = 0; c < columns; c++) {
+      let tile = document.getElementById(r + "-" + c);
+      let num = board[r][c];
+      updateTile(tile, num);
+    }
   }
 
-  console.log("slideLeft");
+  //console.log("slideLeft");
 }
 
 function slideRight() {
@@ -83,4 +91,27 @@ function slideUp() {
 
 function slideDown() {
   console.log("slideDown");
+}
+
+function filterZero(row) {
+  return row.filter((num) => num != 0);
+}
+
+function slide(row) {
+  row = filterZero(row);
+
+  for (let i = 0; i < row.length; i++) {
+    if (row[i] === row[i + 1]) {
+      row[i] *= 2;
+      row[i + 1] = 0;
+      score += row[i];
+    }
+  }
+
+  row = filterZero(row);
+  while (row.length < columns) {
+    row.push(0);
+  }
+
+  return row;
 }
