@@ -18,7 +18,7 @@ hr {
   flex-wrap: wrap;
 }
 
-.title {
+.tile {
   width: 90px;
   height: 90px;
   border: 5px solid #bbada0;
@@ -28,6 +28,7 @@ hr {
   align-items: center;
 }
 
+/* Tile Value Colors */
 .x2 {
   background-color: #eee4da;
   color: #727371;
@@ -54,5 +55,29 @@ hr {
 }
 .x128 {
   background-color: #edce71;
+  color: #fff;
+}
+.x256 {
+  background-color: #edcc63;
+  color: #fff;
+}
+.x512 {
+  background-color: #edc651;
+  color: #fff;
+}
+.x1024 {
+  background-color: #eec744;
+  color: #fff;
+}
+.x2048 {
+  background-color: #ecc230;
+  color: #fff;
+}
+.x4096 {
+  background-color: #fe3d3d;
+  color: #fff;
+}
+.x8192 {
+  background-color: #ff2020;
   color: #fff;
 }
