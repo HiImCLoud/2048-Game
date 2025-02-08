@@ -15,5 +15,12 @@ hr {
   border: 6px solid #bbada0;
 }
 
-.tile {
+.title {
+  width: 90px;
+  height: 90px;
+  border: 5px solid #bbada0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
