@@ -13,6 +13,9 @@ hr {
   height: 400px;
   margin: 0 auto;
   border: 6px solid #bbada0;
+
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .title {
