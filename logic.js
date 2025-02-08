@@ -6,10 +6,10 @@ let columns = 4;
 
 function setGame() {
   board = [
-    [0, 2, 2, 0],
-    [0, 4, 2, 0],
-    [0, 0, 4, 2],
-    [4, 2, 2, 0],
+    [0, 0, 0, 0],
+    [2, 0, 0, 0],
+    [2, 2, 4, 2],
+    [4, 2, 2, 2],
   ];
 
   for (let r = 0; r < rows; r++) {
@@ -158,4 +158,24 @@ function hasEmptyTiles() {
     }
   }
   return false;
+}
+
+function setOne() {
+  if (!hasEmptyTiles) {
+    return;
+  }
+
+  let found = false;
+  while (!found) {
+    let r = Math.floor(Math.random() * rows);
+    let c = Math.floor(Math.random() * columns);
+
+    if (board[r][c] === 0) {
+      board[r][c] = 2;
+      let tile = document.getElementById(r + "-" + c);
+      updateTile(tile, board[r][c]);
+
+      found = true;
+    }
+  }
 }
