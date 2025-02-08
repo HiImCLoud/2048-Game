@@ -34,5 +34,6 @@ function updateTile(tile, num) {
   tile.classList.add("tile");
 
   if (num > 0) {
+    tile.innerText = num;
   }
 }
