@@ -16,8 +16,23 @@ function setGame() {
     for (let c = 0; c < columns; c++) {
       let tile = document.createElement("div");
       tile.id = r + "-" + c;
+
+      let num = board[r][c];
+      updateTile(tile, num);
+
+      document.getElementById("board").append(tile);
     }
   }
 }
 
 setGame();
+
+function updateTile(tile, num) {
+  tile.innerText = "";
+  tile.classList.valie = "";
+
+  tile.classList.add("tile");
+
+  if (num > 0) {
+  }
+}
