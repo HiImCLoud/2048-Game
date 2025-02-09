@@ -5,13 +5,17 @@ let score = 0;
 let rows = 4;
 let columns = 4;
 
+let is2048Exist = false;
+let is4096Exist = false;
+let is8192Exist = false;
+
 // we are going to contain array of arrays in board, nested array, 2d array, matrix
 
 // function that will set the gameboard:
 function setGame() {
   // How can we initalize a 4x4 game board with all tiles set to 0
   board = [
-    [0, 0, 0, 0],
+    [0, 1024, 1024, 0],
     [0, 0, 0, 0],
     [0, 0, 0, 0],
     [0, 0, 0, 0],
@@ -74,20 +78,21 @@ function handleSlide(event) {
     ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.code)
   ) {
     // If statement that will be bsed on which arrow key was pressed.
-    if (event.code == "ArrowLeft") {
+    if (event.code == "ArrowLeft" && canMoveLeft()) {
       slideLeft();
       setOne();
-    } else if (event.code == "ArrowRight") {
+    } else if (event.code == "ArrowRight" && canMoveRight()) {
       slideRight();
       setOne();
-    } else if (event.code == "ArrowUp") {
+    } else if (event.code == "ArrowUp" && canMoveUp()) {
       slideUp();
       setOne();
-    } else if (event.code == "ArrowDown") {
+    } else if (event.code == "ArrowDown" && canMoveDown()) {
       slideDown();
       setOne();
     }
   }
+  checkWin();
 }
 
 // EventListener
@@ -250,6 +255,82 @@ function setOne() {
       found = true;
     }
   }
-
-  console.log(board);
 }
+
+// We are going to create a function that will check if there is possible to move going left.
+function canMoveLeft() {
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < columns; c++) {
+      // console.log(`${r}-${c}`);
+
+      if (board[r][c] != 0) {
+        // checks if the position to the left of the current tile is equal to its self
+        if (board[r][c] == board[r][c - 1] || board[r][c - 1] == 0) {
+          return true;
+        }
+      }
+    }
+  }
+
+  return false;
+}
+
+function canMoveRight() {
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < columns; c++) {
+      if (board[r][c] != 0) {
+        // To check if the value to the right is 0 or equal to itself?
+        if (board[r][c] == board[r][c + 1] || board[r][c + 1] == 0) {
+          return true;
+        }
+      }
+    }
+  }
+
+  return false;
+}
+
+function canMoveUp() {
+  for (let c = 0; c < columns; c++) {
+    for (let r = 1; r < rows; r++) {
+      if (board[r][c] != 0) {
+        if (board[r - 1][c] == 0 || board[r - 1][c] == board[r][c]) {
+          return true;
+        }
+      }
+    }
+  }
+
+  return false;
+}
+
+function canMoveDown() {
+  for (let c = 0; c < columns; c++) {
+    for (let r = rows - 2; r >= 0; r--) {
+      if (board[r][c] != 0) {
+        if (board[r + 1][c] == 0 || board[r + 1][c] == board[r][c]) {
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}
+function checkWin() {
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < columns; c++) {
+      if (board[r][c] == 2048 && !is2048Exist) {
+        alert("You win! You got the 2048 ");
+        is2048Exist = true;
+      } else if (board[r][c] == 4096 && !is4096Exist) {
+        alert("You win! You got the 4096 ");
+        is4096Exist = true;
+      } else if (board[r][c] == 8192 && !is8192Exist) {
+        is8192Exist = true;
+        alert("You win! You got the 8192");
+      }
+    }
+  }
+}
+
+// Function that will check if the user lost
