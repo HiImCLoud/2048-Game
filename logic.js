@@ -212,6 +212,7 @@ function slideUp() {
 function slideDown() {
   for (let c = 0; c < columns; c++) {
     let col = board.map((row) => row[c]);
+    let originalCol = col.slice();
 
     col = col.reverse();
 
@@ -225,6 +226,13 @@ function slideDown() {
 
       let tile = document.getElementById(r + "-" + c);
       let num = board[r][c];
+      if (originalCol[r] !== num && num != 0) {
+        tile.style.animation = "slide-from-top 0.3s";
+
+        setTimeout(() => {
+          tile.style.animation = "";
+        }, 300);
+      }
       updateTile(tile, num);
     }
   }
