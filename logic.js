@@ -15,7 +15,7 @@ let is8192Exist = false;
 function setGame() {
   // How can we initalize a 4x4 game board with all tiles set to 0
   board = [
-    [0, 1024, 1024, 0],
+    [0, 0, 0, 0],
     [0, 0, 0, 0],
     [0, 0, 0, 0],
     [0, 0, 0, 0],
@@ -92,6 +92,9 @@ function handleSlide(event) {
       setOne();
     }
   }
+
+  document.getElementById("score").innerText = score;
+
   setTimeout(() => {
     if (hasLost()) {
       alert("Game Over! You have lost the game. Game will restart");
@@ -109,6 +112,7 @@ function restartGame() {
     [0, 0, 0, 0],
     [0, 0, 0, 0],
   ];
+  score = 0;
   setOne();
 }
 
@@ -353,6 +357,7 @@ function checkWin() {
 // Function that will check if the user lost
 
 function hasLost() {
+  // Check if there are any empty tiles (if so, the game is NOT over)
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < columns; c++) {
       if (board[r][c] == 0) {
@@ -360,14 +365,22 @@ function hasLost() {
       }
     }
   }
-  let currentTile = board[r][c];
-  if (
-    (r > 0 && board[r - 1][c] === currentTile) ||
-    (r < rows - 1 && board[r + 1][c] === currentTile) ||
-    (c > 0 && board[r][c - 1] === currentTile) ||
-    (c < columns - 1 && board[r][c + 1] === currentTile)
-  ) {
-    return false;
+
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < columns; c++) {
+      let currentTile = board[r][c];
+
+      if (
+        (r > 0 && board[r - 1][c] === currentTile) ||
+        (r < rows - 1 && board[r + 1][c] === currentTile) ||
+        (c > 0 && board[r][c - 1] === currentTile) ||
+        (c < columns - 1 && board[r][c + 1] === currentTile)
+      ) {
+        return false;
+      }
+    }
   }
+
+  // No empty tiles and no possible moves → GAME OVER
   return true;
 }
