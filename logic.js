@@ -182,11 +182,11 @@ function slideRight() {
     }
   }
 }
-
 function slideUp() {
   for (let c = 0; c < columns; c++) {
     // the elements of the col from the current iteration?
     let col = board.map((row) => row[c]);
+    let originalCol = col.slice();
 
     col = slide(col);
 
@@ -196,6 +196,14 @@ function slideUp() {
 
       let tile = document.getElementById(r + "-" + c);
       let num = board[r][c];
+
+      if (originalCol[r] !== num && num != 0) {
+        tile.style.animation = "slide-from-bottom 0.3s";
+        setTimeout(() => {
+          tile.style.animation = "";
+        }, 300);
+      }
+
       updateTile(tile, num);
     }
   }
