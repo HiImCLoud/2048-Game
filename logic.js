@@ -92,7 +92,24 @@ function handleSlide(event) {
       setOne();
     }
   }
-  checkWin();
+  setTimeout(() => {
+    if (hasLost()) {
+      alert("Game Over! You have lost the game. Game will restart");
+      restartGame();
+      alert("Click any arrow key to restart the game");
+    } else {
+      checkWin();
+    }
+  }, 100);
+}
+function restartGame() {
+  board = [
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+  ];
+  setOne();
 }
 
 // EventListener
@@ -334,3 +351,23 @@ function checkWin() {
 }
 
 // Function that will check if the user lost
+
+function hasLost() {
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < columns; c++) {
+      if (board[r][c] == 0) {
+        return false;
+      }
+    }
+  }
+  let currentTile = board[r][c];
+  if (
+    (r > 0 && board[r - 1][c] === currentTile) ||
+    (r < rows - 1 && board[r + 1][c] === currentTile) ||
+    (c > 0 && board[r][c - 1] === currentTile) ||
+    (c < columns - 1 && board[r][c + 1] === currentTile)
+  ) {
+    return false;
+  }
+  return true;
+}
