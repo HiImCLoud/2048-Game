@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta property="og:title" content="I coded a game with Zuitt!">
         <!-- Provides a brief description of your webpage that will be displayed beneath the title in a social media post. -->
         <meta property="og:description" content="This Game Development project is powered by Zuitt Coding Bootcamp">
@@ -9,16 +11,26 @@
         <!-- Defines the URL of an image that will be shown alongside the title and description when your webpage is shared. (thumbnail) -->
         <meta property="og:image" content="[your-deployment-link]/images/story-thumbnail-2048.jpg">
         <!-- This ensures the image is accessible over a secure connection, which is important for platforms that require HTTPS. -->
-        <meta property="og:image:secure_url" content="[your-deployment-link]">
+        <meta property="og:image:secure_url" content="https://www.facebook.com/Basic.Cloud">
         <title>2048</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="shortcut icon" href="./images/2048_logo.svg.png" type="image/x-icon">
+        <!--Link of CSS file  -->
+        <link rel="shortcut icon" href="/images/2048_logo.svg.png" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+            integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        >
     </head>
     <body>
         <div class="container">
+            <!-- h1-h6 - heading tags-->
             <h1>2048</h1>
-            <h2>Created By. Joshua Calopez</h2>
-            <hr>
+            <h2>Created By: Joshua Calopez</h2>
+            <!-- hr - horizontal -->
+            <hr id="top-line">
             <div class="header-container">
                 <div class="score-container">
                     <div class="score-label">
@@ -39,30 +51,50 @@
                     </div>
                 </div>
             </div>
+            <!-- This serve as the board of our game. -->
             <div id="board">
-                <!--
-
-            <div class="x2 tile">[r0,c0]</div>
-            <div class="x4 tile">[r0,c1]</div>
-            <div class="x8 tile">[r0,c2]</div>
-            <div class="x16 tile">[r0,c3]</div>
-
-            <div class="x32 tile">[r1,c0]</div>
-            <div class="x64 tile">[r1,c1]</div>
-            <div class="x128 tile">[r1,c2]</div>
-            <div class="x256 tile">[r1,c3]</div>
-
-            <div class="x512 tile">[r2,c0]</div>
-            <div class="x1024 tile">[r2,c1]</div>
-            <div class="x2048 tile">[r2,c2]</div>
-            <div class="x4096 tile">[r2,c3]</div>
-
-            <div class="x8192 tile">[r3,c0]</div>
-            <div class="tile">[r3,c1]</div>
-            <div class="tile">[r3,c2]</div>
-            <div class="tile">[r3,c3]</div>
-            --></div>
-            <script src="logic.js"></script>
+                <!-- First Row -->
+                <!-- <div class = "x2 tile">[r0, c0]</div>
+				<div class = "x4 tile">[r0, c1]</div>
+				<div class = "x8 tile">[r0, c2]</div>
+				<div class = "x8 tile">[r0, c3]</div> -->
+                <!-- Second Row -->
+                <!-- <div class = "x32 tile">[r1, c0]</div>
+				<div class = "x64 tile">[r1, c1]</div>
+				<div class = "x128 tile">[r1, c2]</div>
+				<div class = "x256 tile">[r1, c3]</div> -->
+                <!-- Third Row -->
+                <!-- <div class = "x512 tile">[r2, c0]</div>
+				<div class = "x1024 tile">[r2, c1]</div>
+				<div class = "x2048 tile">[r2, c2]</div>
+				<div class = "x4096 tile">[r2, c3]</div> -->
+                <!--Fourth Row -->
+                <!-- <div class = "x8192 tile">[r3, c0]</div>
+				<div class = "tile">[r3, c1]</div>
+				<div class = "tile">[r3, c2]</div>
+				<div class = "tile">[r3, c3]</div> --></div>
         </div>
+        <footer>
+            <a href="https://zuitt.co/?referral=2402-org-ali" target="blank">
+                <i class="fa-solid fa-globe"></i>
+            </a>
+            <a href="https://www.facebook.com/zuitttechcareer" target="blank">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://x.com/zuittco" target="blank">
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/zuitt_co/" target="blank">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@zuittco" target="blank">
+                <i class="fa-brands fa-tiktok"></i>
+            </a>
+            <a href="https://www.youtube.com/@ZuittCo" target="blank">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+        </footer>
+        <!-- Script of the game -->
+        <script type="text/javascript" src="./logic.js"></script>
     </body>
 </html>

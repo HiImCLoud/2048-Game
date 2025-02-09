@@ -1,34 +1,39 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
+  color: #0047ab;
 }
 
 hr {
   max-width: 480px;
+  border: 1px solid #b7dff2;
 }
 
 #board {
-  background-color: #cdc1b5;
+  background-color: #e0f5ff;
   width: 400px;
   height: 400px;
   margin: 0 auto;
-  border: 6px solid #bbada0;
-
+  border: 6px solid #e0f5ff;
   display: flex;
   flex-wrap: wrap;
 }
 
 .tile {
+  position: relative;
+  display: inline-block;
   width: 90px;
   height: 90px;
-  border: 5px solid #bbada0;
-
+  border: 5px solid #b7dff2;
+  font-size: 40px;
+  font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
-/* Tile Value Colors */
 .x2 {
   background-color: #eee4da;
   background-image: var(--background-image-url-02);
@@ -108,7 +113,6 @@ hr {
   color: rgba(0, 0, 0, 0);
 }
 
-/*This animation starts with the element fully outside the right boundary (transformed by translateX(100%)) and progresses to the original position (transformed by translateX(0)) as it reaches 100% completion.*/
 @keyframes slide-from-right {
   0% {
     transform: translateX(100%);
@@ -118,7 +122,6 @@ hr {
   }
 }
 
-/*The element fully outside the left boundary (transformed by translateX(-100%)) and progresses to the original position (transformed by translateX(0)) as it reaches 100% completion.*/
 @keyframes slide-from-left {
   0% {
     transform: translateX(-100%);
@@ -128,7 +131,6 @@ hr {
   }
 }
 
-/*This animation starts with the element fully outside the top boundary (transformed by translateY(-100%)) and progresses to the original position (transformed by translateY(0)) as it reaches 100% completion.*/
 @keyframes slide-from-top {
   0% {
     transform: translateY(-100%);
@@ -138,7 +140,6 @@ hr {
   }
 }
 
-/*The element fully outside the bottom boundary (transformed by translateY(100%)) and progresses to the original position (transformed by translateY(0)) as it reaches 100% completion.*/
 @keyframes slide-from-bottom {
   0% {
     transform: translateY(100%);
@@ -147,7 +148,8 @@ hr {
     transform: translateY(0);
   }
 }
-/*creating variables to contain images.*/
+
+/* Defining CSS variables for background images */
 :root {
   --background-image-url-02: url("./images/01-zuitt_2.png");
   --background-image-url-04: url("./images/02-zuitt_4.png");
@@ -164,16 +166,76 @@ hr {
   --background-image-url-8192: url("./images/13-zuitt_8192.png");
 }
 
-.container{
+.container {
   box-sizing: border-box;
-  margin 0 auto;
+  margin: 0 auto;
 }
 
-.header-container{
+.header-container {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Fixed typo: removed the 'a' */
   max-width: 100%;
   width: 400px;
   margin: 0 auto;
+}
 
+.score-container,
+.share-button-container {
+  margin-left: 5px;
+  margin-right: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 57px;
+  font-weight: 600;
+}
+
+.share-button-container {
+  align-items: flex-start;
+}
+
+.score-container {
+  align-items: flex-start;
+}
+
+.share-button-container {
+  align-items: flex-end;
+}
+
+#score {
+  font-weight: bold;
+  font-size: 26px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: end;
+}
+
+.share-label,
+.score-label {
+  margin-bottom: 2px;
+}
+
+.share-button-container a img {
+  width: 30px;
+  height: auto;
+}
+
+footer {
+  background-color: #0047ab;
+  margin: 0 auto;
+  width: 90vw;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 5px;
+}
+i {
+  font-size: 25px;
+  color: white;
+  margin: 0 10px 0 10px;
+}
+
+i:hover {
+  color: #808080;
 }
