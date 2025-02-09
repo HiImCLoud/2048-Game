@@ -152,8 +152,7 @@ function slideRight() {
   for (let r = 0; r < rows; r++) {
     // [4, 2, 2, 0] => [0, 0, 4, 4]
     let row = board[r];
-
-    let origninalRow = row.slice();
+    let originalRow = row.slice();
 
     //[0, 2, 2, 4]
     row = row.reverse();
@@ -170,6 +169,15 @@ function slideRight() {
     for (let c = 0; c < columns; c++) {
       let tile = document.getElementById(r + "-" + c);
       let num = board[r][c];
+
+      if (originalRow[c] !== num && num !== 0) {
+        tile.style.animation = "slide-from-left 0.3s";
+
+        setTimeout(() => {
+          tile.style.animation = "";
+        }, 300);
+      }
+
       updateTile(tile, num);
     }
   }
